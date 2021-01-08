@@ -11,7 +11,19 @@ GET http://localhost:3001/api/persons/4
 DELETE http://localhost:3001/api/persons/3
 
 ###
+DELETE https://rs-phonebook-app.herokuapp.com/api/persons/5
+
+###
 POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Anton Ibrahimovich",
+    "number": "555-555-5555"
+}
+
+###
+POST https://rs-phonebook-app.herokuapp.com/api/persons/
 Content-Type: application/json
 
 {

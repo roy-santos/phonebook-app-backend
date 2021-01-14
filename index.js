@@ -72,18 +72,26 @@ app.put('/api/persons/:id', (request, response, next) => {
   const body = request.body;
 
   const contact = {
-    name: body.name,
     number: body.number,
   };
 
-  Contact.findByIdAndUpdate(request.params.id, contact, {
+  const opts = {
     new: true,
     runValidators: true,
-  })
+  };
+
+  Contact.findByIdAndUpdate(request.params.id, contact, opts)
     .then((updatedContact) => {
+      if (updatedContact === null) {
+        return Promise.reject();
+      }
+      console.log(updatedContact); // DELETE ME
       response.json(updatedContact);
     })
-    .catch((error) => next(error));
+    .catch((error) => {
+      console.log('DIDNT FIND IT'); // DELETE ME
+      next(error);
+    });
 });
 
 const errorHandler = (error, request, response, next) => {

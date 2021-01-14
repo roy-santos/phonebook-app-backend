@@ -85,11 +85,9 @@ app.put('/api/persons/:id', (request, response, next) => {
       if (updatedContact === null) {
         return Promise.reject();
       }
-      console.log(updatedContact); // DELETE ME
       response.json(updatedContact);
     })
     .catch((error) => {
-      console.log('DIDNT FIND IT'); // DELETE ME
       next(error);
     });
 });
